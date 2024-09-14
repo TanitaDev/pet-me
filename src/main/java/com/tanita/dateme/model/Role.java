@@ -11,14 +11,11 @@ import java.util.Set;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Role {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Role extends AbstractEntity {
 
     private String name;
 
     @ManyToMany(mappedBy = "roles")
     private Set<User> users;
+
 }

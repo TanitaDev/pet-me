@@ -11,11 +11,7 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Message {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Message extends AbstractEntity {
 
     @ManyToOne
     @JoinColumn(name = "chat_id")
@@ -34,4 +30,5 @@ public class Message {
     private LocalDateTime dateWritten;
 
     private boolean read;
+
 }

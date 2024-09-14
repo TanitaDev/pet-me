@@ -11,11 +11,7 @@ import java.util.Set;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class DatingPlace {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class DatingPlace extends AbstractEntity {
 
     private String name;
 
@@ -23,4 +19,5 @@ public class DatingPlace {
 
     @OneToMany(mappedBy = "datingPlace")
     private Set<Invitation> invitations;
+
 }

@@ -12,11 +12,7 @@ import java.util.Set;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Chat {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Chat extends AbstractEntity {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -28,4 +24,5 @@ public class Chat {
 
     @OneToMany(mappedBy = "chat")
     private Set<Message> messages;
+
 }

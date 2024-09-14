@@ -11,14 +11,11 @@ import java.util.Set;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Gender {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Gender extends AbstractEntity {
 
     private String name;
 
     @OneToMany(mappedBy = "gender")
     private Set<User> users;
+
 }

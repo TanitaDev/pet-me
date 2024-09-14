@@ -13,18 +13,20 @@ import java.util.Set;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class User extends AbstractEntity {
 
     private String username;
+
     private String firstName;
+
     private String lastName;
+
     private int age;
+
     private String avatar;
+
     private String phoneNumber;
+
     private LocalDateTime lastOnlineTimestamp;
 
     @ManyToOne
@@ -47,4 +49,5 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     private Set<Chat> chats;
+
 }

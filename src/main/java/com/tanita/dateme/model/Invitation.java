@@ -10,11 +10,7 @@ import lombok.AllArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Invitation {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Invitation extends AbstractEntity {
 
     @ManyToOne
     @JoinColumn(name = "sender_id")
@@ -27,4 +23,5 @@ public class Invitation {
     @ManyToOne
     @JoinColumn(name = "dating_place_id")
     private DatingPlace datingPlace;
+
 }
