@@ -29,10 +29,6 @@ public class User extends AbstractEntity {
 
     private LocalDateTime lastOnlineTimestamp;
 
-    @ManyToOne
-    @JoinColumn(name = "gender_id")
-    private Gender gender;
-
     @ManyToMany
     @JoinTable(
             name = "user_to_role",
