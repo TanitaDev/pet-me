@@ -1,4 +1,4 @@
-create table user
+create table users
 (
     id                    bigserial primary key,
     username              text unique not null,
@@ -26,7 +26,7 @@ create table role
 
 create table user_to_role
 (
-    user_id bigint not null references user (id),
+    user_id bigint not null references users (id),
     role    text   not null,
     role_id bigint not null references role (id)
 );
@@ -44,12 +44,12 @@ create table dating_place
 
 create table invitation
 (
-    id         bigserial primary key,
-    created_at timestamp not null,
-    updated_at timestamp,
-    sender_id  bigint    not null references user (id),
-    receiver_id          not null references user (id),
-    dating_place_id      not null references dating_place (id)
+    id              bigserial primary key,
+    created_at      timestamp not null,
+    updated_at      timestamp,
+    sender_id       bigint    not null references users (id),
+    receiver_id     bigint    not null references users (id),
+    dating_place_id bigint    not null references dating_place (id)
 );
 
 
@@ -58,9 +58,9 @@ create table chat
     id         bigserial primary key,
     created_at timestamp not null,
     updated_at timestamp,
-    user_id    biging references user (id),
-    chat_type  text,
-)
+    user_id    bigint references users (id),
+    chat_type  text
+);
 
 
 create table message
@@ -69,8 +69,8 @@ create table message
     created_at   timestamp not null,
     updated_at   timestamp,
     chat_id      bigint    not null references chat (id),
-    sender_id    bigint    not null references user (id),
-    receiver_id            not null references user (id),
+    sender_id    bigint    not null references users (id),
+    receiver_id  bigint    not null references users (id),
     content      text,
     date_written timestamp,
     red          timestamp

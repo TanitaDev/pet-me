@@ -1,4 +1,4 @@
-package com.tanita.dateme.model;
+package com.tanita.dateme.common.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;

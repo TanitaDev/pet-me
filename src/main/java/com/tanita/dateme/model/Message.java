@@ -1,5 +1,6 @@
 package com.tanita.dateme.model;
 
+import com.tanita.dateme.common.model.AbstractEntity;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -29,6 +30,6 @@ public class Message extends AbstractEntity {
 
     private LocalDateTime dateWritten;
 
-    private boolean read;
+    private boolean red;
 
 }

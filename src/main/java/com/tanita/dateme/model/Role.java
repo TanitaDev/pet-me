@@ -1,5 +1,6 @@
 package com.tanita.dateme.model;
 
+import com.tanita.dateme.common.model.AbstractEntity;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,5 +18,7 @@ public class Role extends AbstractEntity {
 
     @ManyToMany(mappedBy = "roles")
     private Set<User> users;
+
+    private String code;
 
 }
