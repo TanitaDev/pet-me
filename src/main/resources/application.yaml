@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: date-me
+  datasource:
+    url: jdbc:postgresql://localhost:5432/date-me
+    username: postomat_backend
+    password: postomat_backend
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+  flyway:
+    enabled: true
+    validate-on-migrate: true
+    placeholder-replacement: false
+

@@ -2,14 +2,14 @@ package com.tanita.dateme.model;
 
 import com.tanita.dateme.common.model.AbstractEntity;
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
+import lombok.*;
+
 import java.util.Set;
 
 @Entity
 @Table(name = "dating_place")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class DatingPlace extends AbstractEntity {

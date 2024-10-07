@@ -8,9 +8,11 @@ create table users
     email                 text unique not null,
     age                   int,
     gender                text,
-    avatar                bytea,
-    phone_number          bigint,
-    last_online_timestamp timestamp
+    avatar                text,
+    phone_number          text,
+    last_online_timestamp timestamp,
+    created_at            timestamp not null,
+    updated_at            timestamp
 );
 
 
