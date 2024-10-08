@@ -2,9 +2,9 @@ spring:
   application:
     name: date-me
   datasource:
-    url: jdbc:postgresql://localhost:5432/date-me
-    username: postomat_backend
-    password: postomat_backend
+    url: jdbc:postgresql://localhost:5430/date-me
+    username: postgres
+    password: postgres
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:

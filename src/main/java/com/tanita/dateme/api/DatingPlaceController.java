@@ -1,6 +1,7 @@
 package com.tanita.dateme.api;
 
 
+import com.tanita.dateme.datingplace.mapper.DatingPlaceMapper;
 import com.tanita.dateme.dto.common.RestResponse;
 import com.tanita.dateme.dto.place.DatingPlaceDto;
 import com.tanita.dateme.service.DatingPlaceService;
@@ -18,11 +19,14 @@ import java.util.List;
 public class DatingPlaceController {
 
     private final DatingPlaceService datingPlaceService;
+    private final DatingPlaceMapper datingPlaceMapper;
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public RestResponse<List<DatingPlaceDto>> getAll() {
-//        List<DatingPlaceDto> response = datingPlaceService.getAll();
-        return RestResponse.ok();
+        List<DatingPlaceDto> response = datingPlaceService.getAll().stream()
+                .map(datingPlaceMapper::toDto)
+                .toList();
+        return RestResponse.ok(response);
     }
 
 }
