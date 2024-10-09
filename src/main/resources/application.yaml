@@ -14,3 +14,10 @@ spring:
     validate-on-migrate: true
     placeholder-replacement: false
 
+storage:
+  s3:
+    credentials:
+      access-key: ${object-storage.s3.key.access:access}
+      secret-key: ${object-storage.s3.key.secret:secret}
+    buckets:
+
