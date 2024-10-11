@@ -17,7 +17,7 @@ spring:
 storage:
   s3:
     credentials:
-      access-key: ${object-storage.s3.key.access:access}
-      secret-key: ${object-storage.s3.key.secret:secret}
-    buckets:
+      access-key: ${storage.s3.credentials.access-key:access}
+      secret-key: ${storage.s3.credentials.secret-key:secret}
+    bucket: ${AWS_S3_BUCKET:date-me-bucket}
 
