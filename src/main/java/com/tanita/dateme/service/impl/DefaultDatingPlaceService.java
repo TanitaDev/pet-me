@@ -19,4 +19,6 @@ public class DefaultDatingPlaceService implements DatingPlaceService {
         return datingPlaceRepository.findAll();
     }
 
+
+
 }
