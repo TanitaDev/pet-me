@@ -17,6 +17,10 @@ spring:
 storage:
   s3:
     credentials:
-      access-key: AKIASFUIRQGVMXIZHKVZ
-      secret-key: secret
-    bucket: date-me-bucket
+      access-key: accessKey
+      secret-key: secretKey
+    bucket: date-me
+    stuck:
+      auto: false
+    region:
+      static: us-east-1
