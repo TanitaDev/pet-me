@@ -5,6 +5,7 @@ import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.amazonaws.services.s3.model.S3Object;
 import com.amazonaws.services.s3.model.S3ObjectInputStream;
 import com.amazonaws.util.IOUtils;
+import com.tanita.dateme.dto.InMemoryFile;
 import com.tanita.dateme.service.S3Service;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -36,12 +37,13 @@ public class DefaultS3Service implements S3Service {
     }
 
     @Override
-    public byte[] downloadFile(String fileName) {
+    public InMemoryFile downloadFile(String fileName) {
         S3Object s3Object = s3Client.getObject(bucketName, fileName);
+        String contentType = s3Object.getObjectMetadata().getContentType();
         S3ObjectInputStream inputStream = s3Object.getObjectContent();
         try {
             byte[] content = IOUtils.toByteArray(inputStream);
-            return content;
+            return new InMemoryFile(fileName, contentType, content);
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -12,10 +12,12 @@ import lombok.Setter;
 @Setter
 public class Image extends AbstractEntity {
 
-    private String imageUrl;
-
     @ManyToOne
     @JoinColumn(name = "dating_place_id")
     private DatingPlace datingPlace;
+
+    private String bucketName;
+
+    private String fileName;
 
 }
