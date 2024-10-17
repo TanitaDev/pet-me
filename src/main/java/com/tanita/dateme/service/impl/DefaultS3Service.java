@@ -5,7 +5,7 @@ import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.amazonaws.services.s3.model.S3Object;
 import com.amazonaws.services.s3.model.S3ObjectInputStream;
 import com.amazonaws.util.IOUtils;
-import com.tanita.dateme.dto.InMemoryFile;
+import com.tanita.dateme.config.awc.InMemoryFile;
 import com.tanita.dateme.service.S3Service;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -30,10 +31,10 @@ public class DefaultS3Service implements S3Service {
     @Override
     public String uploadFile(MultipartFile file) {
         File fileObj = convertMultiPartFileToFile(file);
-        String fileName = System.currentTimeMillis() + "-" + file.getOriginalFilename();
-        s3Client.putObject(new PutObjectRequest(bucketName, fileName, fileObj));
+        String fileKey = UUID.randomUUID() + "-" + System.currentTimeMillis();
+        s3Client.putObject(new PutObjectRequest(bucketName, fileKey, fileObj));
         fileObj.delete();
-        return "File uploaded: " + fileName;
+        return "File uploaded: " + fileKey;
     }
 
     @Override

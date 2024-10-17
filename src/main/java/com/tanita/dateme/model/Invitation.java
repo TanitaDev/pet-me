@@ -1,6 +1,8 @@
 package com.tanita.dateme.model;
 
 import com.tanita.dateme.common.model.AbstractEntity;
+import com.tanita.dateme.datingplace.model.DatingPlace;
+import com.tanita.dateme.user.model.User;
 import jakarta.persistence.*;
 import lombok.*;
 

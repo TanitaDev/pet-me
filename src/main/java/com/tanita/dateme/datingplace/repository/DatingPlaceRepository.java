@@ -1,6 +1,6 @@
-package com.tanita.dateme.repository;
+package com.tanita.dateme.datingplace.repository;
 
-import com.tanita.dateme.model.DatingPlace;
+import com.tanita.dateme.datingplace.model.DatingPlace;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

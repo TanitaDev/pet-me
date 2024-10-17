@@ -1,7 +1,7 @@
 package com.tanita.dateme.datingplace.mapper;
 
-import com.tanita.dateme.dto.place.DatingPlaceDto;
-import com.tanita.dateme.model.DatingPlace;
+import com.tanita.dateme.dto.datingplace.DatingPlaceDto;
+import com.tanita.dateme.datingplace.model.DatingPlace;
 import org.mapstruct.Builder;
 import org.mapstruct.Mapper;
 

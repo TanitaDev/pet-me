@@ -1,6 +1,6 @@
 package com.tanita.dateme.api;
 
-import com.tanita.dateme.dto.InMemoryFile;
+import com.tanita.dateme.config.awc.InMemoryFile;
 import com.tanita.dateme.service.S3Service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.io.ByteArrayResource;
