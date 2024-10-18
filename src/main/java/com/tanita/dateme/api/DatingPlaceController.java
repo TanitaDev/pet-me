@@ -4,7 +4,7 @@ package com.tanita.dateme.api;
 import com.tanita.dateme.datingplace.mapper.DatingPlaceMapper;
 import com.tanita.dateme.dto.common.RestResponse;
 import com.tanita.dateme.dto.datingplace.DatingPlaceDto;
-import com.tanita.dateme.service.DatingPlaceService;
+import com.tanita.dateme.datingplace.service.DatingPlaceService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;

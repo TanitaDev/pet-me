@@ -1,4 +1,4 @@
-package com.tanita.dateme.service;
+package com.tanita.dateme.datingplace.service;
 
 import com.tanita.dateme.datingplace.model.DatingPlace;
 import com.tanita.dateme.dto.datingplace.request.DatingPlaceRequest;
