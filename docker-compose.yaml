@@ -18,7 +18,7 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - '8080:8080'
+      - '8070:8080'
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/date-me
       - SPRING_DATASOURCE_USERNAME=postgres
@@ -26,3 +26,10 @@ services:
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
     depends_on:
       - db
+
+  s3:
+    image: localstack/localstack
+    container_name: s3
+    ports:
+      - '4566:4566'
+      - '4510-4559:4510-4559'

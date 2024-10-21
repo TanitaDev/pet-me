@@ -1,4 +1,4 @@
-package com.tanita.dateme.api;
+package com.tanita.dateme.api.datingplace;
 
 
 import com.tanita.dateme.datingplace.mapper.DatingPlaceMapper;

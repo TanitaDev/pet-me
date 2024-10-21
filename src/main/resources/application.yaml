@@ -1,4 +1,15 @@
+server:
+  port: 8070
+
+  tomcat:
+    max-swallow-size: 100MB
+
 spring:
+  servlet:
+    multipart:
+      max-file-size: 2MB
+      max-request-size: 10MB
+
   application:
     name: date-me
   datasource:
@@ -17,10 +28,18 @@ spring:
 storage:
   s3:
     credentials:
-      access-key: accessKey
-      secret-key: secretKey
+      access-key: ""
+      secret-key: ""
     bucket: date-me
     stuck:
       auto: false
     region:
       static: us-east-1
+    host: https://localhost.localstack.cloud:4566
+
+s3:
+  client:
+    connection-timeout: 2000
+    max-error-retry: 0
+    socket-timeout: 5000
+

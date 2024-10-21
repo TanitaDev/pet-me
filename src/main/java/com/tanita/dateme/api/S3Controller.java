@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+
 
 @RestController()
 @RequiredArgsConstructor
@@ -17,7 +19,7 @@ public class S3Controller {
     private final S3Service s3Service;
 
     @PostMapping("/upload")
-    public ResponseEntity<String> upload(@RequestParam("file") MultipartFile file) {
+    public ResponseEntity<String> upload(@RequestParam("file") MultipartFile file) throws IOException {
         s3Service.uploadFile(file);
         return ResponseEntity.ok("Uploaded");
     }

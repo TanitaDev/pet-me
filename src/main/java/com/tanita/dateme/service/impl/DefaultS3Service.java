@@ -29,13 +29,34 @@ public class DefaultS3Service implements S3Service {
     private final AmazonS3 s3Client;
 
     @Override
-    public String uploadFile(MultipartFile file) {
+    public String uploadFile(MultipartFile file) throws IOException {
         File fileObj = convertMultiPartFileToFile(file);
         String fileKey = UUID.randomUUID() + "-" + System.currentTimeMillis();
         s3Client.putObject(new PutObjectRequest(bucketName, fileKey, fileObj));
         fileObj.delete();
         return "File uploaded: " + fileKey;
     }
+
+
+//    @Override
+//    public String uploadFile(MultipartFile file) throws IOException {
+//        File fileObj = convertMultiPartFileToFile(file);
+//        String fileKey = UUID.randomUUID() + "-" + System.currentTimeMillis();
+//        ObjectMetadata metadata = new ObjectMetadata();
+//        metadata.setContentType(file.getContentType());
+//        byte[] fileObj1 = Files.readAllBytes(fileObj.toPath());
+//        metadata.setContentLength(fileObj1.length);
+//
+//        Path tempFile =  Files.createTempFile("temp", fileKey);
+//        File file1 = tempFile.toFile();
+//        file.transferTo(file1);
+////        s3Client.putObject(new PutObjectRequest(bucketName, fileKey, fileObj));
+//        s3Client.putObject(new PutObjectRequest(bucketName, fileKey, new ByteArrayInputStream(fileObj1), metadata));
+//
+//        //s3Client.putObject(bucketName, fileKey, fileObj);
+//        fileObj.delete();
+//        return "File uploaded: " + fileKey;
+//    }
 
     @Override
     public InMemoryFile downloadFile(String fileName) {
