@@ -30,6 +30,7 @@ dependencies {
     implementation 'org.flywaydb:flyway-database-postgresql'
     implementation group: 'org.mapstruct', name: 'mapstruct', version: '1.5.5.Final'
     implementation 'com.amazonaws:aws-java-sdk-s3:1.12.416'
+    implementation 'org.springframework.boot:spring-boot-starter-security:3.4.0'
 
     compileOnly 'org.projectlombok:lombok'
 
