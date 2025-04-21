@@ -1,5 +1,6 @@
 package com.tanita.dateme.config.security;
 
+import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.SecurityFilterChain;
@@ -18,5 +19,4 @@ public class SecurityConfiguration {
                 )
                 .build();
     }
-
 }

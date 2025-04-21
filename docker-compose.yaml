@@ -4,7 +4,7 @@ services:
   db:
     image: postgres
     ports:
-      - '5430:5432'
+      - '5432:5432'
     container_name: 'datemeDB'
     restart: always
     environment:
@@ -18,7 +18,7 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - '8070:8080'
+      - '8080:8080'
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/date-me
       - SPRING_DATASOURCE_USERNAME=postgres

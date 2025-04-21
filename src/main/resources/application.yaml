@@ -1,5 +1,5 @@
 server:
-  port: 8070
+  port: 8080
 
   tomcat:
     max-swallow-size: 100MB
@@ -13,7 +13,7 @@ spring:
   application:
     name: date-me
   datasource:
-    url: jdbc:postgresql://localhost:5430/date-me
+    url: jdbc:postgresql://localhost:5432/date-me
     username: postgres
     password: postgres
     driver-class-name: org.postgresql.Driver
@@ -24,6 +24,11 @@ spring:
     enabled: true
     validate-on-migrate: true
     placeholder-replacement: false
+
+  security:
+    user:
+      name: ${SECURITY_NAME:tanita}
+      password: ${SECURITY_PASSWORD:dev}
 
 storage:
   s3:

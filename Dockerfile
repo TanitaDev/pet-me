@@ -1,5 +1,11 @@
+FROM gradle:8.5-jdk21 AS builder
+WORKDIR /app
+COPY . .
+RUN gradle clean build -x test
+
+
 FROM openjdk:21
 WORKDIR /app
-COPY build/libs/date-me-0.0.1-SNAPSHOT.jar app.jar
-EXPOSE 8070
+COPY --from=builder /app/build/libs/*.jar app.jar
+EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "app.jar"]
