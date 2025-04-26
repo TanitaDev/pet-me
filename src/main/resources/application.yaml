@@ -11,9 +11,9 @@ spring:
       max-request-size: 10MB
 
   application:
-    name: date-me
+    name: pet-me
   datasource:
-    url: jdbc:postgresql://localhost:5432/date-me
+    url: jdbc:postgresql://localhost:5432/pet-me
     username: postgres
     password: postgres
     driver-class-name: org.postgresql.Driver
@@ -35,7 +35,7 @@ storage:
     credentials:
       access-key: ""
       secret-key: ""
-    bucket: date-me
+    bucket: pet-me
     stuck:
       auto: false
     region:

@@ -3,7 +3,6 @@ WORKDIR /app
 COPY . .
 RUN gradle clean build -x test
 
-
 FROM openjdk:21
 WORKDIR /app
 COPY --from=builder /app/build/libs/*.jar app.jar

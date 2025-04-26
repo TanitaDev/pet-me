@@ -5,22 +5,22 @@ services:
     image: postgres
     ports:
       - '5432:5432'
-    container_name: 'datemeDB'
+    container_name: 'petmeDB'
     restart: always
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=date-me
+      - POSTGRES_DB=pet-me
 
   app:
-    container_name: datemeApp
+    container_name: petmeApp
     build:
       context: .
       dockerfile: Dockerfile
     ports:
       - '8080:8080'
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/date-me
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/pet-me
       - SPRING_DATASOURCE_USERNAME=postgres
       - SPRING_DATASOURCE_PASSWORD=postgres
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
