@@ -11,7 +11,7 @@ create table users
     avatar                text,
     phone_number          text,
     last_online_timestamp timestamp,
-    created_at            timestamp not null,
+    created_at            timestamp   not null,
     updated_at            timestamp
 );
 
