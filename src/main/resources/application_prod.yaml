@@ -1,0 +1,32 @@
+server:
+  port: 8080
+
+  tomcat:
+    max-swallow-size: 100MB
+
+spring:
+  config:
+    activate:
+      on-profile: prod
+
+  servlet:
+    multipart:
+      max-file-size: 2MB
+      max-request-size: 10MB
+
+  application:
+    name: pet-me
+    
+  datasource:
+    url: jdbc:postgresql://localhost:5432/pet-me
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+
+
+
+logging:
+  level:
+    org:
+      springframework:
+        security: ${SPRING_SECURITY_LOG_LEVEL:ERROR}

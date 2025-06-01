@@ -30,6 +30,11 @@ spring:
       name: ${SECURITY_NAME:tanita}
       password: ${SECURITY_PASSWORD:dev}
 
+  config:
+    import: application_prod.yaml
+  profiles:
+    active: prod
+
 storage:
   s3:
     credentials:
