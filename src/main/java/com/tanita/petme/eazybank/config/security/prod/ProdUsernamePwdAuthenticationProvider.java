@@ -1,5 +1,6 @@
-package com.tanita.petme.eazybank.config.security;
+package com.tanita.petme.eazybank.config.security.prod;
 
+import com.tanita.petme.eazybank.config.security.DefaultUserDetailsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Profile;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -13,7 +14,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Profile("prod")
 @RequiredArgsConstructor
-public class UsernamePwdAuthenticationProviderProd implements AuthenticationProvider {
+public class ProdUsernamePwdAuthenticationProvider implements AuthenticationProvider {
 
     private final DefaultUserDetailsService userDetailsService;
     private final PasswordEncoder passwordEncoder;

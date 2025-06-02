@@ -1,5 +1,6 @@
 package com.tanita.petme.eazybank.config.security;
 
+import com.tanita.petme.eazybank.exceptionhandler.CustomBasicAuthenticationEntryPoint;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
@@ -24,7 +25,8 @@ public class SecurityConfiguration {
                 .requestMatchers("/api/bankme/account").authenticated()
                 .requestMatchers("/api/bankme/contact", "/api/bankme/register").permitAll());
         http.formLogin(withDefaults());
-        http.httpBasic(withDefaults());
+        http.httpBasic(hbc ->
+                hbc.authenticationEntryPoint(new CustomBasicAuthenticationEntryPoint()));
         return http.build();
     }
 

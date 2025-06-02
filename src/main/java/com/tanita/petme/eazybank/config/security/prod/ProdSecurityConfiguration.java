@@ -1,4 +1,4 @@
-package com.tanita.petme.eazybank.config.security;
+package com.tanita.petme.eazybank.config.security.prod;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
