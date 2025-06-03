@@ -1,5 +1,6 @@
 package com.tanita.petme.eazybank.config.security;
 
+import com.tanita.petme.eazybank.exceptionhandler.CustomAccessDeniedHandler;
 import com.tanita.petme.eazybank.exceptionhandler.CustomBasicAuthenticationEntryPoint;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -27,6 +28,8 @@ public class SecurityConfiguration {
         http.formLogin(withDefaults());
         http.httpBasic(hbc ->
                 hbc.authenticationEntryPoint(new CustomBasicAuthenticationEntryPoint()));
+        http.exceptionHandling(ehc ->
+                ehc.accessDeniedHandler(new CustomAccessDeniedHandler()).accessDeniedPage("/denied"));
         return http.build();
     }
 
