@@ -2,6 +2,7 @@ package com.tanita.petme.eazybank.config.security;
 
 import com.tanita.petme.eazybank.exceptionhandler.CustomAccessDeniedHandler;
 import com.tanita.petme.eazybank.exceptionhandler.CustomBasicAuthenticationEntryPoint;
+import com.tanita.petme.filter.RequestValidationBeforeFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,6 +14,7 @@ import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.password.HaveIBeenPwnedRestApiPasswordChecker;
+import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 
@@ -38,14 +40,16 @@ public class SecurityConfiguration {
                 return null;
             }
         }));
-        http.csrf(AbstractHttpConfigurer::disable);
-        http.authorizeHttpRequests((requests) -> requests
-                .requestMatchers("/api/bankme/account").hasAuthority("VIEWACCOUNT")
-                .requestMatchers("/api/bankme/cards").hasAuthority("VIEWCARDS")
-                .requestMatchers("/api/bankme/loans").hasAuthority("VIEWLOANS")
-                .requestMatchers("/api/bankme/balance").hasAnyAuthority("VIEWBALANCE", "VIEWACCOUNT")
-                .requestMatchers("/api/bankme/users").authenticated()
-                .requestMatchers("/api/bankme/contact", "/api/bankme/register").permitAll());
+        http
+                .csrf(AbstractHttpConfigurer::disable)
+                .addFilterBefore(new RequestValidationBeforeFilter(), BasicAuthenticationFilter.class)
+                .authorizeHttpRequests((requests) -> requests
+                        .requestMatchers("/api/bankme/account").hasRole("USER")
+                        .requestMatchers("/api/bankme/cards").hasRole("USER")
+                        .requestMatchers("/api/bankme/loans").hasRole("USER")
+                        .requestMatchers("/api/bankme/balance").hasAnyRole("USER", "ADMIN")
+                        .requestMatchers("/api/bankme/user").authenticated()
+                        .requestMatchers("/api/bankme/contact", "/api/bankme/register").permitAll());
         http.formLogin(withDefaults());
         http.httpBasic(hbc ->
                 hbc.authenticationEntryPoint(new CustomBasicAuthenticationEntryPoint()));
