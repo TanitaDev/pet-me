@@ -2,6 +2,7 @@ package com.tanita.petme.eazybank.config.security;
 
 import com.tanita.petme.eazybank.exceptionhandler.CustomAccessDeniedHandler;
 import com.tanita.petme.eazybank.exceptionhandler.CustomBasicAuthenticationEntryPoint;
+import com.tanita.petme.filter.AutheticationLogginAtFilter;
 import com.tanita.petme.filter.RequestValidationBeforeFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.context.annotation.Bean;
@@ -15,6 +16,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.password.HaveIBeenPwnedRestApiPasswordChecker;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
+import org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 
@@ -43,6 +45,7 @@ public class SecurityConfiguration {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .addFilterBefore(new RequestValidationBeforeFilter(), BasicAuthenticationFilter.class)
+                .addFilterAt(new AutheticationLogginAtFilter(), WebAsyncManagerIntegrationFilter.class)
                 .authorizeHttpRequests((requests) -> requests
                         .requestMatchers("/api/bankme/account").hasRole("USER")
                         .requestMatchers("/api/bankme/cards").hasRole("USER")
